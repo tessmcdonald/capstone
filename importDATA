@@ -15,3 +15,14 @@ mkdir capstone
 // enter the 'capstone' directory
 cd capstone
 
+// show folders in HDFS 'user' directory
+hadoop fs -ls /user/
+
+// create a new directory called 'capstone'
+hadoop fs -mkdir /user/capstone/
+
+// show files in HDFS 'capstone' directory
+hadoop fs -ls /user/capstone/
+
+// put 'transaction' file in capstone directory
+hadoop fs -put transactions.csv /user/capstone
