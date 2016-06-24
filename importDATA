@@ -30,3 +30,34 @@ hadoop fs -ls /user/capstone/
 
 // put 'transaction' file in capstone directory
 hadoop fs -put transactions.csv /user/capstone/
+
+
+
+
+
+///// import data into HIVE (create DATABASE & TABLES)
+
+
+
+create database capstone;
+
+use capstone;
+
+
+// create 'transactions' table
+create external table capstone.transactions (
+      id STRING,
+      chain STRING,
+      dept STRING,
+      category STRING,
+      company STRING,
+      brand STRING,
+      transdate DATE,
+      productsize DOUBLE,
+      productmeasure STRING,
+      purchasequantity DOUBLE,
+      purchaseamount DOUBLE)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+LOCATION '/user/capstone/';
