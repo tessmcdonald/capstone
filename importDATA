@@ -1,2 +1,16 @@
-//import CSV files into HIVE
+/////import CSV files into HADOOP DOCUMENT MANAGEMENT SYSTEM
 
+// list files in the current directory
+ll
+
+// show the current directory path
+pwd
+
+// enter the 'home' directory
+cd /home
+
+// create a directory called 'capstone'
+mkdir capstone
+
+// enter the 'capstone' directory
+cd capstone
