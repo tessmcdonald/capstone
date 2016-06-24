@@ -1,5 +1,6 @@
 /////import CSV files into HADOOP DISTRIBUTED FILE SYSTEM
 
+
 // list files in the current directory
 ll
 
@@ -14,6 +15,7 @@ mkdir capstone
 
 // enter the 'capstone' directory
 cd capstone
+
 
 // show folders in HDFS 'user' directory
 hadoop fs -ls /user/
