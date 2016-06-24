@@ -29,4 +29,4 @@ hadoop fs -mkdir /user/capstone/
 hadoop fs -ls /user/capstone/
 
 // put 'transaction' file in capstone directory
-hadoop fs -put transactions.csv /user/capstone
+hadoop fs -put transactions.csv /user/capstone/
