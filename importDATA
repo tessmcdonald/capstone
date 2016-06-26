@@ -31,6 +31,12 @@ hadoop fs -ls /user/capstone/
 // put 'transaction' file in capstone directory
 hadoop fs -put transactions.csv /user/capstone/
 
+// put 'offers' file in capstone directory
+hadoop fs -put offers.csv /user/capstone/
+
+// put 'trainHistory' file in capstone directory
+hadoop fs -put trainHistory.csv /user/capstone/
+
 
 
 
