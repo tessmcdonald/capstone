@@ -34,7 +34,7 @@ hadoop fs -put transactions.csv /user/capstone/
 // put 'offers' file in capstone directory
 hadoop fs -put offers.csv /user/capstone/
 
-// put 'trainHistory' file in capstone directory
+// put 'history' file in capstone directory
 hadoop fs -put trainHistory.csv /user/capstone/
 
 
@@ -67,3 +67,17 @@ ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 LOCATION '/user/capstone/';
+
+// create 'offers' table
+create external table capstone.offers (
+      offer STRING,
+      category STRING,
+      quantity DOUBLE,
+      company STRING,
+      offervalue DOUBLE,
+      brand STRING)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+LOCATION '/user/capstone/';
+
