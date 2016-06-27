@@ -11,31 +11,44 @@ pwd
 // enter the 'home' directory
 cd /home
 
-// create a directory called 'capstone'
-mkdir capstone
+// create a directory called 'offers'
+mkdir offers
 
-// enter the 'capstone' directory
-cd capstone
+// create a directory called 'history'
+mkdir history
+
+// create a directory called 'transactions'
+mkdir transactions
+
+
 
 
 
 // show folders in HDFS 'user' directory
 hadoop fs -ls /user/
 
-// create a new directory called 'capstone'
-hadoop fs -mkdir /user/capstone/
+// create a new directory called 'offers'
+hadoop fs -mkdir /user/offers/
 
-// show files in HDFS 'capstone' directory
-hadoop fs -ls /user/capstone/
+// put 'offers' file in offers directory
+hadoop fs -put offers.csv /user/offers/
 
-// put 'transaction' file in capstone directory
-hadoop fs -put transactions.csv /user/capstone/
+// create a new directory called 'history'
+hadoop fs -mkdir /user/history/
 
-// put 'offers' file in capstone directory
-hadoop fs -put offers.csv /user/capstone/
+// put 'history' file in offers directory
+hadoop fs -put trainHistory.csv /user/history/
 
-// put 'history' file in capstone directory
-hadoop fs -put trainHistory.csv /user/capstone/
+// create a new directory called 'transactions'
+hadoop fs -mkdir /user/transactions/
+
+// put 'transactions' file in offers directory
+hadoop fs -put transactions.csv /user/transactions/
+
+// show files in HDFS 'offers' directory
+hadoop fs -ls /user/offers/
+
+
 
 
 
@@ -80,4 +93,3 @@ ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 LOCATION '/user/capstone/';
-
