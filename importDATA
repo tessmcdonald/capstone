@@ -42,11 +42,23 @@ hadoop fs -put trainHistory.csv /user/history/
 // create a new directory called 'transactions'
 hadoop fs -mkdir /user/transactions/
 
-// put 'transactions' file in offers directory
-hadoop fs -put transactions.csv /user/transactions/
+// put 'transactions_1' file in transactions directory
+hadoop fs -put transactions_1.csv /user/transactions/
 
-// show files in HDFS 'offers' directory
-hadoop fs -ls /user/offers/
+// put 'transactions_2' file in transactions directory
+hadoop fs -put transactions_2.csv /user/transactions/
+
+// put 'transactions_3' file in transactions directory
+hadoop fs -put transactions_3.csv /user/transactions/
+
+// put 'transactions_4' file in transactions directory
+hadoop fs -put transactions_4.csv /user/transactions/
+
+// put 'transactions_5' file in transactions directory
+hadoop fs -put transactions_5.csv /user/transactions/
+
+// show files in HDFS 'transactions' directory
+hadoop fs -ls /user/transactions/
 
 
 
@@ -64,9 +76,9 @@ use capstone;
 
 
 // create 'transactions' table
-create external table capstone.transactions (
+create table capstone.transactions (
       id STRING,
-      chain STRING,
+      chain INT,
       dept STRING,
       category STRING,
       company STRING,
@@ -78,11 +90,26 @@ create external table capstone.transactions (
       purchaseamount DOUBLE)
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
-LINES TERMINATED BY '\n'
-LOCATION '/user/capstone/';
+TBLPROPERTIES("SKIP.HEADER.LINE.COUNT"="1");
+
+LOAD DATA INPATH '/user/transactions/transactions_1.csv'
+INTO TABLE capstone.transactions;
+
+LOAD DATA INPATH '/user/transactions/transactions_2.csv'
+INTO TABLE capstone.transactions;
+
+LOAD DATA INPATH '/user/transactions/transactions_3.csv'
+INTO TABLE capstone.transactions;
+
+LOAD DATA INPATH '/user/transactions/transactions_4.csv'
+INTO TABLE capstone.transactions;
+
+LOAD DATA INPATH '/user/transactions/transactions_5.csv'
+INTO TABLE capstone.transactions;
+
 
 // create 'offers' table
-create external table capstone.offers (
+create table capstone.offers (
       offer STRING,
       category STRING,
       quantity DOUBLE,
@@ -91,5 +118,24 @@ create external table capstone.offers (
       brand STRING)
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
-LINES TERMINATED BY '\n'
-LOCATION '/user/capstone/';
+TBLPROPERTIES("SKIP.HEADER.LINE.COUNT"="1");
+
+LOAD DATA INPATH '/user/offers/offers.csv'
+INTO TABLE capstone.offers;
+
+
+// create 'history' table
+create table capstone.history (
+      id STRING,
+      chain INT,
+      offer STRING,
+      market STRING,
+      repeattrips INT,
+      repeater STRING,
+      offerdate DATE)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+TBLPROPERTIES("SKIP.HEADER.LINE.COUNT"="1");
+
+LOAD DATA INPATH '/user/history/trainHistory.csv'
+INTO TABLE capstone.history;
