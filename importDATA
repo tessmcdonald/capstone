@@ -21,9 +21,6 @@ mkdir history
 mkdir transactions
 
 
-
-
-
 // show folders in HDFS 'user' directory
 hadoop fs -ls /user/
 
@@ -59,8 +56,6 @@ hadoop fs -put transactions_5.csv /user/transactions/
 
 // show files in HDFS 'transactions' directory
 hadoop fs -ls /user/transactions/
-
-
 
 
 
