@@ -18,3 +18,5 @@ select * from capstone.dataRFM;
 // import RFM data into R
 setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive Analytics')
 dataRFM <- read.csv('dataRFM.csv', sep = ',', header = FALSE)
+
+colnames(dataRFM) = c('customer_id', 'date_of_purchase', 'purchase_amount')
