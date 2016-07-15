@@ -22,3 +22,6 @@ dataRFM <- read.csv('dataRFM.csv', sep = ',', header = FALSE)
 colnames(dataRFM) = c('customer_id', 'date_of_purchase', 'purchase_amount')
 dataRFM$days_since = as.numeric(difftime(time1 = '2013-07-25', time2 = dataRFM$date_of_purchase, units = 'days'))
 dataRFM[,'days_since']=round(dataRFM[,'days_since'],0)
+
+install.packages("sqldf")
+library("sqldf")
