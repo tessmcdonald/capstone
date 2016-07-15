@@ -20,3 +20,4 @@ setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive 
 dataRFM <- read.csv('dataRFM.csv', sep = ',', header = FALSE)
 
 colnames(dataRFM) = c('customer_id', 'date_of_purchase', 'purchase_amount')
+dataRFM$date_of_purchase = as.Date(dataRFM$date_of_purchase, '%Y-%M-%D')
