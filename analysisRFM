@@ -1,2 +1,8 @@
+///// perform RFM segmentation analysis
 
+// create RFM table 
+create table dataRFM as
+select id, transdate, sum(purchaseamount) as totalSPEND
+from cleanDATAx
+group by id, transdate;
 
