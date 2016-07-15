@@ -32,3 +32,11 @@ create table cleanDATAx as
 select * from cleanDATA
 where chain = 15 or chain = 20 or chain = 95 or chain = 17
 or chain = 3 or chain = 18 or chain = 88 or chain = 4 or chain = 14;
+
+
+
+// create RFM table 
+create table dataRFM as
+select id, transdate, sum(purchaseamount) as totalSPEND
+from cleanDATAx
+group by id, transdate;
