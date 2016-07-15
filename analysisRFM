@@ -33,4 +33,9 @@ avg(purchase_amount) as 'amount'
 from dataRFM 
 group by 1')
 
-
+head(customers)
+summary(customers)
+hist(customers$recency)
+hist(customers$frequency)
+hist(customers$amount)
+hist(customers$amount, breaks = 100)
