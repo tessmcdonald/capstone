@@ -25,3 +25,12 @@ dataRFM[,'days_since']=round(dataRFM[,'days_since'],0)
 
 install.packages("sqldf")
 library("sqldf")
+
+customers = sqldf('select customer_id, 
+min(days_since) as 'recency',
+count(*) as 'frequency', 
+avg(purchase_amount) as 'amount'
+from dataRFM 
+group by 1')
+
+
