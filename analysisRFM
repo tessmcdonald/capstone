@@ -1,15 +1,2 @@
-import org.apache.log4j.Logger
-import org.apache.log4j.Level
-Logger.getLogger("org").setLevel(Level.OFF)
-Logger.getLogger("akka").setLevel(Level.OFF)
 
-import org.apache.spark.sql.types._
-import org.apache.spark.sql.functions._
-import sqlContext.implicits._
-import org.apache.spark.sql._
-
-// Runs any HiveQL command
-sqlContext.sql("use capstone");
-// Creates a DataFrame pointing to the specified Hive table 
-val f = sqlContext.table("dataRFM")
 
