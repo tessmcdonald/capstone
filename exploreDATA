@@ -1,1 +1,34 @@
-// Clean Data Set 
+///// CLEAN DATA SET, remove outliers and missing values
+
+// calculate the minimum and maximum unit price
+select min(purchaseamount), max(purchaseamount) 
+from transactions;
+
+// calculate the average unit price
+select avg(purchaseamount) from transactions;
+
+// calculate the standard deviation for unit price 
+select stddev(purhaseamount) from transactions;
+
+// create CLEANED DATA table
+create table cleanDATA as
+select * from transactions
+where purchaseamount >= 0 and purchaseamount <= 24;
+
+// calculate totalSPEND per customer
+select id, sum(purchaseamount) as totalSPEND
+from cleanDATA
+group by id
+order by totalSPEND desc
+limit 25;
+
+// identify chains that have an insignificant number of unique customers
+select chain, count(distinct id)
+from secleanDATA
+group by chain;
+
+// create CLEANEd DATA table exclusively for chains with significant number of unique customers
+create table cleanDATAx as
+select * from cleanDATA
+where chain = 15 or chain = 20 or chain = 95 or chain = 17
+or chain = 3 or chain = 18 or chain = 88 or chain = 4 or chain = 14;
