@@ -6,3 +6,6 @@ select id, transdate, sum(purchaseamount) as totalSPEND
 from cleanDATAx
 group by id, transdate;
 
+// export new RFM table
+insert overwrite directory '/user/capstone/' select * from capstone.dataRFM;
+
