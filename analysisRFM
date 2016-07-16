@@ -39,3 +39,22 @@ hist(customers$recency)
 hist(customers$frequency)
 hist(customers$amount)
 hist(customers$amount, breaks = 100)
+
+newDATA = customers
+row.names(newDATA) = newDATA$customer_id
+newDATA$customer_id = NULL
+head(newDATA)
+
+newDATA$amount = log(newDATA$amount)
+hist(newDATA$amount)
+
+newDATA = scale(newDATA)
+head(newDATA)
+
+d = dist(newDATA)
+c = hclust(d, method = "ward.D2")
+plot(c)
+members = cutree(c, k = 4)
+members[1:30]
+table(members)
+aggregate(customers[,2:4], by = list(members), mean)
