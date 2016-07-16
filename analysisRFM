@@ -58,3 +58,6 @@ members = cutree(c, k = 4)
 members[1:30]
 table(members)
 aggregate(customers[,2:4], by = list(members), mean)
+
+segments = as.data.frame(members)
+segments$customer_id = row.names(segments)
