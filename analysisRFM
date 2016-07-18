@@ -61,3 +61,5 @@ aggregate(customers[,2:4], by = list(members), mean)
 
 segments = as.data.frame(members)
 segments$customer_id = row.names(segments)
+
+write.table(segments, file = "segments.csv",row.names=FALSE, na="",col.names=FALSE, sep=",")
