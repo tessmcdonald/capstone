@@ -25,3 +25,5 @@ select b.segment, a.id, a.transdate, a.chain, a.category, a.company, a.brand, a.
 from cleandatax a join segments b
 on a.id = b.id
 limit 25; 
+
+select concat(category,'-',brand) from cleandatax limit 10;
