@@ -7,3 +7,16 @@ cd /home/segments
 hadoop fs -mkdir /user/segments/
 hadoop fs -put segments.csv /user/segments/
 
+create table capstone.segments (
+segment INT
+id STRING)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ',';
+
+load data inpath '/user/segments/segments.csv'
+into table capstone.segments;
+
+select a.id, a.transdate, b.segment
+from cleandatax a join segments b
+on a.id = b.id
+limit 10;
