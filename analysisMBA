@@ -1,0 +1,9 @@
+// import RFM data
+
+cd /home
+mkdir segments
+cd /home/segments
+
+hadoop fs -mkdir /user/segments/
+hadoop fs -put segments.csv /user/segments/
+
