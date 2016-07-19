@@ -20,3 +20,8 @@ select a.id, a.transdate, b.segment
 from cleandatax a join segments b
 on a.id = b.id
 limit 10;
+
+select b.segment, a.id, a.transdate, a.chain, a.category, a.company, a.brand, a.productsize, a.purchaseamount
+from cleandatax a join segments b
+on a.id = b.id
+limit 25; 
