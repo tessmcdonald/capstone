@@ -40,3 +40,9 @@ concat(category, brand) as product,
 concat(id, transdate) as transID
 from dataMBA
 where segment = 1;
+
+select product, count(*) as total
+from segmentONE
+group by product
+order by total desc
+limit 25;
