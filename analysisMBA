@@ -27,3 +27,16 @@ on a.id = b.id
 limit 25; 
 
 select concat(category,'-',brand) from cleandatax limit 10;
+
+
+create table dataMBA as
+select a.id, a.transdate, a.category, a.brand, b.segment
+from cleandatax a join segments b
+on a.id = b.id; 
+
+create table segmentONE as
+select id, transdate, category, brand, segment,
+concat(category, brand) as product,
+concat(id, transdate) as transID
+from dataMBA
+where segment = 1;
