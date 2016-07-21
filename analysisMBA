@@ -46,3 +46,12 @@ from segmentONE
 group by product
 order by total desc
 limit 25;
+
+
+select product, count(distinct transID) as total from segmentone
+group by product
+order by total desc
+limit 25; 
+
+select count(distinct transID) from segmenttwo; 
+
