@@ -65,6 +65,38 @@ colnames(segmentTEST) = c('customer_id', 'date_of_purchase', 'category', 'brand'
 segmentCLEAN <- unique(segmentTEST)
 
 AggPosData <- split(segmentCLEAN$product,segmentCLEAN$transID)
+head(AggPosData)
+
+install.packages('arules')
+library('arules')
+
+Txns<-as(AggPosData,'transactions')
+summary(Txns)
+
+install.packages('arulesViz')
+library('arulesViz')
+
+itemFrequencyPlot(Txns,topN=20,type="absolute")
+
+rules <- apriori(Txns, parameter = list(supp = 0.001, conf = 0.8))
+rules<-sort(rules, by="confidence", decreasing=TRUE)
+inspect(rules[1:5])
+
+rules<-apriori(data=Txns, parameter=list(supp=0.001,conf = 0.08), 
+appearance = list(default="lhs",rhs="97530"),
+control = list(verbose=F))
+
+rules<-sort(rules, by="confidence", decreasing=TRUE)
+
+inspect(rules[1:5])
+
+rules<-apriori(data=Txns, parameter=list(supp=0.001,conf = 0.05,minlen=2), 
+appearance = list(default="rhs",lhs="97530"),
+control = list(verbose=F))
+
+rules<-sort(rules, by="confidence", decreasing=TRUE)
+
+inspect(rules[1:5])
 
 
 
