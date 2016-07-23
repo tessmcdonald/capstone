@@ -53,6 +53,14 @@ where segment = 4;
 
 
 
+
+
+
+
+setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive Analytics')
+segmentTEST <- read.csv('part1.csv', sep = ',', header = FALSE)
+
+
 select product, count(*) as total
 from segmentONE
 group by product
