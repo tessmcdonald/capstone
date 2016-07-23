@@ -30,12 +30,16 @@ concat(id, transdate) as transID
 from dataMBA
 where segment = 1;
 
+select count(distinct id) from segmentone;
+
 create table segmentTWO as
 select id, transdate, category, brand, segment,
 concat(category, brand) as product,
 concat(id, transdate) as transID
 from dataMBA
 where segment = 2;
+
+select count(distinct id) from segmenttwo;
 
 create table segmentTHREE as
 select id, transdate, category, brand, segment,
@@ -44,12 +48,16 @@ concat(id, transdate) as transID
 from dataMBA
 where segment = 3;
 
+select count(distinct id) from segmentthree;
+
 create table segmentFOUR as
 select id, transdate, category, brand, segment,
 concat(category, brand) as product,
 concat(id, transdate) as transID
 from dataMBA
 where segment = 4;
+
+select count(distinct id) from segmentfour;
 
 
 
