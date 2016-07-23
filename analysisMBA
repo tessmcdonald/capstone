@@ -96,7 +96,18 @@ select * from capstone.segmentFOUR;
 
 
 
+setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive Analytics/segmentONE')
 
+seg1a <- read.csv('001a.csv', sep = ',', header = FALSE)
+seg1b <- read.csv('001b.csv', sep = ',', header = FALSE)
+seg1c <- read.csv('001c.csv', sep = ',', header = FALSE)
+seg1d <- read.csv('001d.csv', sep = ',', header = FALSE)
+seg1e <- read.csv('001e.csv', sep = ',', header = FALSE)
+seg1f <- read.csv('001f.csv', sep = ',', header = FALSE)
+seg1g <- read.csv('001g.csv', sep = ',', header = FALSE)
+seg1h <- read.csv('001h.csv', sep = ',', header = FALSE)
+seg1i <- read.csv('001i.csv', sep = ',', header = FALSE)
+segmentONE <- rbind(seg1a, seg1b, seg1c, seg1d, seg1e, seg1f, seg1g, seg1h, seg1i)
 
 
 
