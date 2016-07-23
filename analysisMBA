@@ -60,6 +60,11 @@ where segment = 4;
 setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive Analytics')
 segmentTEST <- read.csv('part1.csv', sep = ',', header = FALSE)
 
+colnames(segmentTEST) = c('customer_id', 'date_of_purchase', 'category', 'brand', 'segment', 'product', 'transID')
+
+segmentCLEAN <- unique(segmentTEST)
+
+
 
 select product, count(*) as total
 from segmentONE
