@@ -64,6 +64,8 @@ colnames(segmentTEST) = c('customer_id', 'date_of_purchase', 'category', 'brand'
 
 segmentCLEAN <- unique(segmentTEST)
 
+AggPosData <- split(segmentCLEAN$product,segmentCLEAN$transID)
+
 
 
 select product, count(*) as total
