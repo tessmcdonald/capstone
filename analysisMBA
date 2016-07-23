@@ -16,17 +16,6 @@ FIELDS TERMINATED BY ',';
 load data inpath '/user/segments/segments.csv'
 into table capstone.segments;
 
-select a.id, a.transdate, b.segment
-from cleandatax a join segments b
-on a.id = b.id
-limit 10;
-
-select b.segment, a.id, a.transdate, a.chain, a.category, a.company, a.brand, a.productsize, a.purchaseamount
-from cleandatax a join segments b
-on a.id = b.id
-limit 25; 
-
-select concat(category,'-',brand) from cleandatax limit 10;
 
 
 create table dataMBA as
@@ -62,12 +51,13 @@ concat(id, transdate) as transID
 from dataMBA
 where segment = 4;
 
+
+
 select product, count(*) as total
 from segmentONE
 group by product
 order by total desc
 limit 25;
-
 
 select product, count(distinct transID) as total from segmentone
 group by product
