@@ -121,6 +121,25 @@ seg2f <- read.csv('002f.csv', sep = ',', header = FALSE)
 segmentTWO <- rbind(seg2a, seg2b, seg2c, seg2d, seg2e, seg2f)
 
 
+setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive Analytics/segmentTHREE')
+
+seg3a <- read.csv('003a.csv', sep = ',', header = FALSE)
+seg3b <- read.csv('003b.csv', sep = ',', header = FALSE)
+seg3c <- read.csv('003c.csv', sep = ',', header = FALSE)
+seg3d <- read.csv('003d.csv', sep = ',', header = FALSE)
+seg3e <- read.csv('003e.csv', sep = ',', header = FALSE)
+segmentTHREE <- rbind(seg3a, seg3b, seg3c, seg3d, seg3e)
+
+
+setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive Analytics/segmentFOUR')
+
+seg4a <- read.csv('004a.csv', sep = ',', header = FALSE)
+seg4b <- read.csv('004b.csv', sep = ',', header = FALSE)
+seg4c <- read.csv('004c.csv', sep = ',', header = FALSE)
+seg4d <- read.csv('004d.csv', sep = ',', header = FALSE)
+seg4e <- read.csv('004e.csv', sep = ',', header = FALSE)
+segmentFOUR <- rbind(seg4a, seg4b, seg4c, seg4d, seg4e)
+
 
 setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive Analytics')
 segmentTEST <- read.csv('part1.csv', sep = ',', header = FALSE)
