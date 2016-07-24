@@ -137,7 +137,7 @@ summary(rules_1)
 inspect(rules_1)
 
 
-rules1a <- apriori(data=Txns1, parameter=list(supp=0.001,conf = 0.08), 
+rules1a <- apriori(data=Txns1, parameter=list(supp=0.001,conf = 0.8), 
 appearance = list(default="lhs",rhs="15704"),
 control = list(verbose=F))
 
@@ -146,7 +146,7 @@ rules1a <- sort(rules1a, by="confidence", decreasing=TRUE)
 inspect(rules1a[1:5])
 
 
-rules1b <- apriori(data=Txns1, parameter=list(supp=0.001,conf = 0.08), 
+rules1b <- apriori(data=Txns1, parameter=list(supp=0.001,conf = 0.8), 
 appearance = list(default="lhs",rhs="10786"),
 control = list(verbose=F))
 
@@ -155,7 +155,7 @@ rules1b <- sort(rules1b, by="confidence", decreasing=TRUE)
 inspect(rules1b[1:5])
 
 
-rules1c <- apriori(data=Txns1, parameter=list(supp=0.001,conf = 0.08), 
+rules1c <- apriori(data=Txns1, parameter=list(supp=0.001,conf = 0.8), 
 appearance = list(default="lhs",rhs="0"),
 control = list(verbose=F))
 
@@ -201,7 +201,7 @@ summary(rules_2)
 inspect(rules_2)
 
 
-rules2a <- apriori(data=Txns2, parameter=list(supp=0.001,conf = 0.08), 
+rules2a <- apriori(data=Txns2, parameter=list(supp=0.001,conf = 0.8), 
 appearance = list(default="lhs",rhs="15704"),
 control = list(verbose=F))
 
@@ -210,7 +210,7 @@ rules2a <- sort(rules2a, by="confidence", decreasing=TRUE)
 inspect(rules2a[1:5])
 
 
-rules2b <- apriori(data=Txns2, parameter=list(supp=0.001,conf = 0.08), 
+rules2b <- apriori(data=Txns2, parameter=list(supp=0.001,conf = 0.8), 
 appearance = list(default="lhs",rhs="10786"),
 control = list(verbose=F))
 
@@ -219,7 +219,7 @@ rules2b <- sort(rules2b, by="confidence", decreasing=TRUE)
 inspect(rules2b[1:5])
 
 
-rules2c <- apriori(data=Txns2, parameter=list(supp=0.001,conf = 0.08), 
+rules2c <- apriori(data=Txns2, parameter=list(supp=0.001,conf = 0.8), 
 appearance = list(default="lhs",rhs="0"),
 control = list(verbose=F))
 
@@ -264,7 +264,7 @@ summary(rules_3)
 inspect(rules_3)
 
 
-rules3a <- apriori(data=Txns3, parameter=list(supp=0.001,conf = 0.08), 
+rules3a <- apriori(data=Txns3, parameter=list(supp=0.001,conf = 0.8), 
 appearance = list(default="lhs",rhs="15704"),
 control = list(verbose=F))
 
@@ -273,7 +273,7 @@ rules3a <- sort(rules3a, by="confidence", decreasing=TRUE)
 inspect(rules3a[1:5])
 
 
-rules3b <- apriori(data=Txns3, parameter=list(supp=0.001,conf = 0.08), 
+rules3b <- apriori(data=Txns3, parameter=list(supp=0.001,conf = 0.8), 
 appearance = list(default="lhs",rhs="10786"),
 control = list(verbose=F))
 
@@ -282,7 +282,7 @@ rules3b <- sort(rules3b, by="confidence", decreasing=TRUE)
 inspect(rules3b[1:5])
 
 
-rules3c <- apriori(data=Txns3, parameter=list(supp=0.001,conf = 0.08), 
+rules3c <- apriori(data=Txns3, parameter=list(supp=0.001,conf = 0.8), 
 appearance = list(default="lhs",rhs="0"),
 control = list(verbose=F))
 
@@ -327,7 +327,7 @@ summary(rules_4)
 inspect(rules_4)
 
 
-rules4a <- apriori(data=Txns4, parameter=list(supp=0.001,conf = 0.08), 
+rules4a <- apriori(data=Txns4, parameter=list(supp=0.001,conf = 0.8), 
 appearance = list(default="lhs",rhs="15704"),
 control = list(verbose=F))
 
@@ -336,7 +336,7 @@ rules4a <- sort(rules4a, by="confidence", decreasing=TRUE)
 inspect(rules4a[1:5])
 
 
-rules4b <- apriori(data=Txns4, parameter=list(supp=0.001,conf = 0.08), 
+rules4b <- apriori(data=Txns4, parameter=list(supp=0.001,conf = 0.8), 
 appearance = list(default="lhs",rhs="10786"),
 control = list(verbose=F))
 
@@ -345,7 +345,7 @@ rules4b <- sort(rules4b, by="confidence", decreasing=TRUE)
 inspect(rules4b[1:5])
 
 
-rules4c <- apriori(data=Txns4, parameter=list(supp=0.001,conf = 0.08), 
+rules4c <- apriori(data=Txns4, parameter=list(supp=0.001,conf = 0.8), 
 appearance = list(default="lhs",rhs="0"),
 control = list(verbose=F))
 
