@@ -128,7 +128,7 @@ head(AggPosData1)
 Txns1 <- as(AggPosData1,'transactions')
 summary(Txns1)
 
-itemFrequencyPlot(Txns1,topN=20,type="absolute")
+itemFrequencyPlot(Txns1,topN=7,type="absolute")
 
 rules_1 <- apriori(Txns1, parameter = list(supp = 0.0075, conf = 0.8))
 rules_1 <-sort(rules_1, by="confidence", decreasing=TRUE)
@@ -192,7 +192,7 @@ head(AggPosData2)
 Txns2 <- as(AggPosData2,'transactions')
 summary(Txns2)
 
-itemFrequencyPlot(Txns2,topN=20,type="absolute")
+itemFrequencyPlot(Txns2,topN=7,type="absolute")
 
 rules_2 <- apriori(Txns2, parameter = list(supp = 0.0075, conf = 0.8))
 rules_2 <-sort(rules_2, by="confidence", decreasing=TRUE)
@@ -255,7 +255,7 @@ head(AggPosData3)
 Txns3 <- as(AggPosData3,'transactions')
 summary(Txns3)
 
-itemFrequencyPlot(Txns3,topN=20,type="absolute")
+itemFrequencyPlot(Txns3,topN=7,type="absolute")
 
 rules_3 <- apriori(Txns3, parameter = list(supp = 0.0075, conf = 0.8))
 rules_3 <-sort(rules_3, by="confidence", decreasing=TRUE)
@@ -318,7 +318,7 @@ head(AggPosData4)
 Txns4 <- as(AggPosData4,'transactions')
 summary(Txns4)
 
-itemFrequencyPlot(Txns4,topN=20,type="absolute")
+itemFrequencyPlot(Txns4,topN=7,type="absolute")
 
 rules_4 <- apriori(Txns4, parameter = list(supp = 0.0075, conf = 0.8))
 rules_4 <-sort(rules_4, by="confidence", decreasing=TRUE)
