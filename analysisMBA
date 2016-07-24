@@ -98,6 +98,8 @@ select * from capstone.segmentFOUR;
 
 library('arules')
 
+
+
 setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive Analytics/segmentONE')
 
 seg1a <- read.csv('001a.csv', sep = ',', header = FALSE)
@@ -135,6 +137,27 @@ summary(rules_1)
 inspect(rules_1)
 
 
+rules1a <- apriori(data=Txns1, parameter=list(supp=0.001,conf = 0.08), 
+appearance = list(default="lhs",rhs="15704"),
+control = list(verbose=F))
+
+rules1a <- sort(rules1a, by="confidence", decreasing=TRUE)
+
+inspect(rules1a[1:5])
+
+
+rules1b <- apriori(data=Txns1, parameter=list(supp=0.001,conf = 0.05,minlen=2), 
+appearance = list(default="rhs",lhs="15704"),
+control = list(verbose=F))
+
+rules1b <- sort(rules1b, by="confidence", decreasing=TRUE)
+
+inspect(rules1b[1:5])
+
+
+
+
+
 setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive Analytics/segmentTWO')
 
 seg2a <- read.csv('002a.csv', sep = ',', header = FALSE)
@@ -167,6 +190,27 @@ rules_2 <-sort(rules_2, by="confidence", decreasing=TRUE)
 summary(rules_2)
 
 inspect(rules_2)
+
+
+rules2a <- apriori(data=Txns2, parameter=list(supp=0.001,conf = 0.08), 
+appearance = list(default="lhs",rhs="15704"),
+control = list(verbose=F))
+
+rules2a <- sort(rules2a, by="confidence", decreasing=TRUE)
+
+inspect(rules2a[1:5])
+
+
+rules2b <- apriori(data=Txns2, parameter=list(supp=0.001,conf = 0.05,minlen=2), 
+appearance = list(default="rhs",lhs="15704"),
+control = list(verbose=F))
+
+rules2b <- sort(rules2b, by="confidence", decreasing=TRUE)
+
+inspect(rules2b[1:5])
+
+
+
 
 
 setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive Analytics/segmentTHREE')
@@ -202,6 +246,27 @@ summary(rules_3)
 inspect(rules_3)
 
 
+rules3a <- apriori(data=Txns3, parameter=list(supp=0.001,conf = 0.08), 
+appearance = list(default="lhs",rhs="15704"),
+control = list(verbose=F))
+
+rules3a <- sort(rules3a, by="confidence", decreasing=TRUE)
+
+inspect(rules3a[1:5])
+
+
+rules3b <- apriori(data=Txns3, parameter=list(supp=0.001,conf = 0.05,minlen=2), 
+appearance = list(default="rhs",lhs="15704"),
+control = list(verbose=F))
+
+rules3b <- sort(rules3b, by="confidence", decreasing=TRUE)
+
+inspect(rules3b[1:5])
+
+
+
+
+
 setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive Analytics/segmentFOUR')
 
 seg4a <- read.csv('004a.csv', sep = ',', header = FALSE)
@@ -233,6 +298,27 @@ rules_4 <-sort(rules_4, by="confidence", decreasing=TRUE)
 summary(rules_4)
 
 inspect(rules_4)
+
+
+rules4a <- apriori(data=Txns4, parameter=list(supp=0.001,conf = 0.08), 
+appearance = list(default="lhs",rhs="15704"),
+control = list(verbose=F))
+
+rules4a <- sort(rules4a, by="confidence", decreasing=TRUE)
+
+inspect(rules4a[1:5])
+
+
+rules4b <- apriori(data=Txns4, parameter=list(supp=0.001,conf = 0.05,minlen=2), 
+appearance = list(default="rhs",lhs="15704"),
+control = list(verbose=F))
+
+rules4b <- sort(rules4b, by="confidence", decreasing=TRUE)
+
+inspect(rules4b[1:5])
+
+
+
 
 
 setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive Analytics')
