@@ -112,9 +112,15 @@ seg1i <- read.csv('001i.csv', sep = ',', header = FALSE)
 segmentONE <- rbind(seg1a, seg1b, seg1c, seg1d, seg1e, seg1f, seg1g, seg1h, seg1i)
 colnames(segmentONE) = c('customer_id', 'date_of_purchase', 'category', 'brand', 'segment', 'product', 'transID')
 
+segmentONE$customer_id <- NULL
+segmentONE$date_of_purchase <- NULL
+segmentONE$category <- NULL
+segmentONE$segment <- NULL
+segmentONE$product <- NULL
+
 segmentONECLEAN <- unique(segmentONE)
 
-AggPosData1 <- split(segmentONECLEAN$product,segmentONECLEAN$transID)
+AggPosData1 <- split(segmentONECLEAN$brand,segmentONECLEAN$transID)
 head(AggPosData1)
 
 Txns1 <- as(AggPosData1,'transactions')
@@ -122,8 +128,10 @@ summary(Txns1)
 
 itemFrequencyPlot(Txns1,topN=20,type="absolute")
 
-rules_1 <- apriori(Txns1, parameter = list(supp = 0.00035, conf = 0.8))
+rules_1 <- apriori(Txns1, parameter = list(supp = 0.0075, conf = 0.8))
 rules_1 <-sort(rules_1, by="confidence", decreasing=TRUE)
+summary(rules_1)
+
 inspect(rules_1)
 
 
@@ -138,9 +146,15 @@ seg2f <- read.csv('002f.csv', sep = ',', header = FALSE)
 segmentTWO <- rbind(seg2a, seg2b, seg2c, seg2d, seg2e, seg2f)
 colnames(segmentTWO) = c('customer_id', 'date_of_purchase', 'category', 'brand', 'segment', 'product', 'transID')
 
+segmentTWO$customer_id <- NULL
+segmentTWO$date_of_purchase <- NULL
+segmentTWO$category <- NULL
+segmentTWO$segment <- NULL
+segmentTWO$product <- NULL
+
 segmentTWOCLEAN <- unique(segmentTWO)
 
-AggPosData2 <- split(segmentTWOCLEAN$product,segmentTWOCLEAN$transID)
+AggPosData2 <- split(segmentTWOCLEAN$brand,segmentTWOCLEAN$transID)
 head(AggPosData2)
 
 Txns2 <- as(AggPosData2,'transactions')
@@ -148,8 +162,10 @@ summary(Txns2)
 
 itemFrequencyPlot(Txns2,topN=20,type="absolute")
 
-rules_2 <- apriori(Txns2, parameter = list(supp = 0.0002, conf = 0.8))
+rules_2 <- apriori(Txns2, parameter = list(supp = 0.0075, conf = 0.8))
 rules_2 <-sort(rules_2, by="confidence", decreasing=TRUE)
+summary(rules_2)
+
 inspect(rules_2)
 
 
@@ -163,6 +179,28 @@ seg3e <- read.csv('003e.csv', sep = ',', header = FALSE)
 segmentTHREE <- rbind(seg3a, seg3b, seg3c, seg3d, seg3e)
 colnames(segmentTHREE) = c('customer_id', 'date_of_purchase', 'category', 'brand', 'segment', 'product', 'transID')
 
+segmentTHREE$customer_id <- NULL
+segmentTHREE$date_of_purchase <- NULL
+segmentTHREE$category <- NULL
+segmentTHREE$segment <- NULL
+segmentTHREE$product <- NULL
+
+segmentTHREECLEAN <- unique(segmentTHREE)
+
+AggPosData3 <- split(segmentTHREECLEAN$brand,segmentTHREECLEAN$transID)
+head(AggPosData3)
+
+Txns3 <- as(AggPosData3,'transactions')
+summary(Txns3)
+
+itemFrequencyPlot(Txns3,topN=20,type="absolute")
+
+rules_3 <- apriori(Txns3, parameter = list(supp = 0.0075, conf = 0.8))
+rules_3 <-sort(rules_3, by="confidence", decreasing=TRUE)
+summary(rules_3)
+
+inspect(rules_3)
+
 
 setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive Analytics/segmentFOUR')
 
@@ -173,6 +211,28 @@ seg4d <- read.csv('004d.csv', sep = ',', header = FALSE)
 seg4e <- read.csv('004e.csv', sep = ',', header = FALSE)
 segmentFOUR <- rbind(seg4a, seg4b, seg4c, seg4d, seg4e)
 colnames(segmentFOUR) = c('customer_id', 'date_of_purchase', 'category', 'brand', 'segment', 'product', 'transID')
+
+segmentFOUR$customer_id <- NULL
+segmentFOUR$date_of_purchase <- NULL
+segmentFOUR$category <- NULL
+segmentFOUR$segment <- NULL
+segmentFOUR$product <- NULL
+
+segmentFOURCLEAN <- unique(segmentFOUR)
+
+AggPosData4 <- split(segmentFOURCLEAN$brand,segmentFOURCLEAN$transID)
+head(AggPosData4)
+
+Txns4 <- as(AggPosData4,'transactions')
+summary(Txns4)
+
+itemFrequencyPlot(Txns4,topN=20,type="absolute")
+
+rules_4 <- apriori(Txns4, parameter = list(supp = 0.0075, conf = 0.8))
+rules_4 <-sort(rules_4, by="confidence", decreasing=TRUE)
+summary(rules_4)
+
+inspect(rules_4)
 
 
 setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive Analytics')
