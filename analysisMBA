@@ -155,6 +155,24 @@ rules1b <- sort(rules1b, by="confidence", decreasing=TRUE)
 inspect(rules1b[1:5])
 
 
+rules1c <- apriori(data=Txns1, parameter=list(supp=0.001,conf = 0.08), 
+appearance = list(default="lhs",rhs="10786"),
+control = list(verbose=F))
+
+rules1c <- sort(rules1c, by="confidence", decreasing=TRUE)
+
+inspect(rules1c[1:5])
+
+
+rules1d <- apriori(data=Txns1, parameter=list(supp=0.001,conf = 0.05,minlen=2), 
+appearance = list(default="rhs",lhs="10786"),
+control = list(verbose=F))
+
+rules1d <- sort(rules1d, by="confidence", decreasing=TRUE)
+
+inspect(rules1d[1:5])
+
+
 
 
 
@@ -208,6 +226,24 @@ control = list(verbose=F))
 rules2b <- sort(rules2b, by="confidence", decreasing=TRUE)
 
 inspect(rules2b[1:5])
+
+
+rules2c <- apriori(data=Txns2, parameter=list(supp=0.001,conf = 0.08), 
+appearance = list(default="lhs",rhs="10786"),
+control = list(verbose=F))
+
+rules2c <- sort(rules2c, by="confidence", decreasing=TRUE)
+
+inspect(rules2c[1:5])
+
+
+rules2d <- apriori(data=Txns2, parameter=list(supp=0.001,conf = 0.05,minlen=2), 
+appearance = list(default="rhs",lhs="10786"),
+control = list(verbose=F))
+
+rules2d <- sort(rules2d, by="confidence", decreasing=TRUE)
+
+inspect(rules2d[1:5])
 
 
 
@@ -264,6 +300,24 @@ rules3b <- sort(rules3b, by="confidence", decreasing=TRUE)
 inspect(rules3b[1:5])
 
 
+rules3c <- apriori(data=Txns3, parameter=list(supp=0.001,conf = 0.08), 
+appearance = list(default="lhs",rhs="10786"),
+control = list(verbose=F))
+
+rules3c <- sort(rules3c, by="confidence", decreasing=TRUE)
+
+inspect(rules3c[1:5])
+
+
+rules3d <- apriori(data=Txns3, parameter=list(supp=0.001,conf = 0.05,minlen=2), 
+appearance = list(default="rhs",lhs="10786"),
+control = list(verbose=F))
+
+rules3d <- sort(rules3d, by="confidence", decreasing=TRUE)
+
+inspect(rules3d[1:5])
+
+
 
 
 
@@ -316,3 +370,21 @@ control = list(verbose=F))
 rules4b <- sort(rules4b, by="confidence", decreasing=TRUE)
 
 inspect(rules4b[1:5])
+
+
+rules4c <- apriori(data=Txns4, parameter=list(supp=0.001,conf = 0.08), 
+appearance = list(default="lhs",rhs="10786"),
+control = list(verbose=F))
+
+rules4c <- sort(rules4c, by="confidence", decreasing=TRUE)
+
+inspect(rules4c[1:5])
+
+
+rules4d <- apriori(data=Txns4, parameter=list(supp=0.001,conf = 0.05,minlen=2), 
+appearance = list(default="rhs",lhs="10786"),
+control = list(verbose=F))
+
+rules4d <- sort(rules4d, by="confidence", decreasing=TRUE)
+
+inspect(rules4d[1:5])
