@@ -13,7 +13,8 @@ hadoop fs -put segments.csv /user/segments/
 
 
 
-// 
+// import data into HIVE
+
 create table capstone.segments (
 segment INT
 id STRING)
@@ -25,10 +26,14 @@ into table capstone.segments;
 
 
 
+// create new data table that combines transactional data and new customer segments 
+
 create table dataMBA as
 select a.id, a.transdate, a.category, a.brand, b.segment
 from cleandatax a join segments b
 on a.id = b.id; 
+
+
 
 ///// segmentONE - BEST CUSTOMERS
 
