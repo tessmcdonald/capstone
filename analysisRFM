@@ -1,5 +1,7 @@
 ///// perform RFM segmentation analysis
 
+
+
 // create RFM table 
 create table dataRFM as
 select id, transdate, sum(purchaseamount) as totalSPEND
@@ -18,14 +20,16 @@ select * from capstone.dataRFM;
 // import RFM data into R
 setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive Analytics')
 dataRFM <- read.csv('dataRFM.csv', sep = ',', header = FALSE)
-
 colnames(dataRFM) = c('customer_id', 'date_of_purchase', 'purchase_amount')
 dataRFM$days_since = as.numeric(difftime(time1 = '2013-07-25', time2 = dataRFM$date_of_purchase, units = 'days'))
 dataRFM[,'days_since']=round(dataRFM[,'days_since'],0)
 
+
+
 install.packages("sqldf")
 library("sqldf")
 
+// manipulate data to prepare recency, frequency and monetary value variables for RFM analysis 
 customers = sqldf("select customer_id, 
 min(days_since) as 'recency',
 count(*) as 'frequency', 
@@ -33,6 +37,7 @@ avg(purchase_amount) as 'amount'
 from dataRFM 
 group by 1")
 
+// visualize distribution of RFM variables
 head(customers)
 summary(customers)
 hist(customers$recency)
@@ -40,17 +45,19 @@ hist(customers$frequency)
 hist(customers$amount)
 hist(customers$amount, breaks = 100)
 
+// create new data frame for RFM analysis
 newDATA = customers
 row.names(newDATA) = newDATA$customer_id
 newDATA$customer_id = NULL
 head(newDATA)
 
+// normalize the monetary value data 
 newDATA$amount = log(newDATA$amount)
 hist(newDATA$amount)
-
 newDATA = scale(newDATA)
 head(newDATA)
 
+// apply the RFM algorithm to segment the data into 4 customer segments 
 d = dist(newDATA)
 c = hclust(d, method = "ward.D2")
 plot(c)
@@ -59,7 +66,14 @@ members[1:30]
 table(members)
 aggregate(customers[,2:4], by = list(members), mean)
 
+// calculate how many customers are in each segment
 segments = as.data.frame(members)
+
+// prepare data table that contains customer ID and assigned customer segment
 segments$customer_id = row.names(segments)
 
+// export the segmentation data for second phase of analysis
 write.table(segments, file = "segments.csv",row.names=FALSE, na="",col.names=FALSE, sep=",", quote=FALSE)
+
+
+
