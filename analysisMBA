@@ -1,4 +1,8 @@
-// import RFM data
+///// perform Market Basket Analysis
+
+
+
+// import RFM data into 
 
 cd /home
 mkdir segments
