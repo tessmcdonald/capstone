@@ -11,30 +11,12 @@ pwd
 // enter the 'home' directory
 cd /home
 
-// create a directory called 'offers'
-mkdir offers
-
-// create a directory called 'history'
-mkdir history
-
 // create a directory called 'transactions'
 mkdir transactions
 
 
 // show folders in HDFS 'user' directory
 hadoop fs -ls /user/
-
-// create a new directory called 'offers'
-hadoop fs -mkdir /user/offers/
-
-// put 'offers' file in offers directory
-hadoop fs -put offers.csv /user/offers/
-
-// create a new directory called 'history'
-hadoop fs -mkdir /user/history/
-
-// put 'history' file in offers directory
-hadoop fs -put trainHistory.csv /user/history/
 
 // create a new directory called 'transactions'
 hadoop fs -mkdir /user/transactions/
@@ -101,36 +83,3 @@ INTO TABLE capstone.transactions;
 
 LOAD DATA INPATH '/user/transactions/transactions_5.csv'
 INTO TABLE capstone.transactions;
-
-
-// create 'offers' table
-create table capstone.offers (
-      offer STRING,
-      category STRING,
-      quantity DOUBLE,
-      company STRING,
-      offervalue DOUBLE,
-      brand STRING)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-TBLPROPERTIES("SKIP.HEADER.LINE.COUNT"="1");
-
-LOAD DATA INPATH '/user/offers/offers.csv'
-INTO TABLE capstone.offers;
-
-
-// create 'history' table
-create table capstone.history (
-      id STRING,
-      chain INT,
-      offer STRING,
-      market STRING,
-      repeattrips INT,
-      repeater STRING,
-      offerdate DATE)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-TBLPROPERTIES("SKIP.HEADER.LINE.COUNT"="1");
-
-LOAD DATA INPATH '/user/history/trainHistory.csv'
-INTO TABLE capstone.history;
