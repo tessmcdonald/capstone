@@ -25,9 +25,9 @@ dataRFM$days_since = as.numeric(difftime(time1 = '2013-07-25', time2 = dataRFM$d
 dataRFM[,'days_since']=round(dataRFM[,'days_since'],0)
 
 
-
 install.packages("sqldf")
 library("sqldf")
+
 
 // manipulate data to prepare recency, frequency and monetary value variables for RFM analysis 
 customers = sqldf("select customer_id, 
