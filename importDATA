@@ -15,6 +15,7 @@ cd /home
 mkdir transactions
 
 
+
 // show folders in HDFS 'user' directory
 hadoop fs -ls /user/
 
@@ -83,3 +84,6 @@ INTO TABLE capstone.transactions;
 
 LOAD DATA INPATH '/user/transactions/transactions_5.csv'
 INTO TABLE capstone.transactions;
+
+
+
