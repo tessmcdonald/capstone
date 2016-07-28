@@ -2,7 +2,7 @@
 
 
 
-// create RFM table 
+// create RFM table that contains three varaibles: custome ID, transaction date and total purchase amount 
 create table dataRFM as
 select id, transdate, sum(purchaseamount) as totalSPEND
 from cleanDATAx
@@ -45,7 +45,7 @@ hist(customers$frequency)
 hist(customers$amount)
 hist(customers$amount, breaks = 100)
 
-// create new data frame for RFM analysis
+// create new data frame for RFM analysis where the row number is replaced with customer ID
 newDATA = customers
 row.names(newDATA) = newDATA$customer_id
 newDATA$customer_id = NULL
@@ -54,6 +54,8 @@ head(newDATA)
 // normalize the monetary value data 
 newDATA$amount = log(newDATA$amount)
 hist(newDATA$amount)
+
+// scale the data so RFM variables are comparable when performing the clustering algorithm 
 newDATA = scale(newDATA)
 head(newDATA)
 
@@ -69,10 +71,10 @@ aggregate(customers[,2:4], by = list(members), mean)
 // calculate how many customers are in each segment
 segments = as.data.frame(members)
 
-// prepare data table that contains customer ID and assigned customer segment
+// create new data table that contains customer ID and assigned customer segment
 segments$customer_id = row.names(segments)
 
-// export the segmentation data for second phase of analysis
+// export the segmentation data to prepare for second phase of analysis
 write.table(segments, file = "segments.csv",row.names=FALSE, na="",col.names=FALSE, sep=",", quote=FALSE)
 
 
