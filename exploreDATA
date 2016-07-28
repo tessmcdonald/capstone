@@ -19,7 +19,6 @@ where purchaseamount >= 0 and purchaseamount <= 24;
 
 
 
-
 // calculate totalSPEND per customer to identify potential outliers 
 select id, sum(purchaseamount) as totalSPEND
 from cleanDATA
