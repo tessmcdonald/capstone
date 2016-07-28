@@ -53,6 +53,7 @@ create database capstone;
 use capstone;
 
 
+
 // create 'transactions' table
 create table capstone.transactions (
       id STRING,
