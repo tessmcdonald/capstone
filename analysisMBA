@@ -2,7 +2,7 @@
 
 
 
-// import RFM data into 
+// import CSV file into HADOOP DISTRIBUTED FILE SYSTEM
 
 cd /home
 mkdir segments
@@ -11,6 +11,9 @@ cd /home/segments
 hadoop fs -mkdir /user/segments/
 hadoop fs -put segments.csv /user/segments/
 
+
+
+// 
 create table capstone.segments (
 segment INT
 id STRING)
