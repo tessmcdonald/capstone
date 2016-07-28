@@ -1,6 +1,8 @@
 ///// CLEAN DATA SET, remove outliers and missing values
 
-// calculate the minimum and maximum unit price
+
+
+// calculate the minimum and maximum unit price to determine variability in data
 select min(purchaseamount), max(purchaseamount) 
 from transactions;
 
@@ -10,19 +12,22 @@ select avg(purchaseamount) from transactions;
 // calculate the standard deviation for unit price 
 select stddev(purhaseamount) from transactions;
 
-// create CLEANED DATA table
+// create CLEANED DATA table so unit price is greater than 0 and within 3 standard deviations of the mean 
 create table cleanDATA as
 select * from transactions
 where purchaseamount >= 0 and purchaseamount <= 24;
 
-// calculate totalSPEND per customer
+
+
+
+// calculate totalSPEND per customer to identify potential outliers 
 select id, sum(purchaseamount) as totalSPEND
 from cleanDATA
 group by id
 order by totalSPEND desc
 limit 25;
 
-// identify chains that have an insignificant number of unique customers
+// identify chains that have an insignificant number of unique customers (<= 2) to eliminate outliers in the data 
 select chain, count(distinct id)
 from secleanDATA
 group by chain;
