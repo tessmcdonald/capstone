@@ -35,7 +35,9 @@ on a.id = b.id;
 
 
 
-///// segmentONE - BEST CUSTOMERS
+
+
+///// segmentONE - BEST CUSTOMERS (extract transactional data for customers assigned to segment 1 and export CSV file) 
 
 create table segmentONE as
 select id, transdate, category, brand, segment,
@@ -53,7 +55,8 @@ lines terminated by '\n' as
 select * from capstone.segmentONE;
 
 
-///// segmentTWO - FORMER BEST CUSTOMERS
+
+///// segmentTWO - FORMER BEST CUSTOMERS (extract transactional data for customers assigned to segment 2 and export CSV file) 
 
 create table segmentTWO as
 select id, transdate, category, brand, segment,
@@ -71,7 +74,8 @@ lines terminated by '\n' as
 select * from capstone.segmentTWO;
 
 
-///// segmentTHREE - ONE TIME BUYERS
+
+///// segmentTHREE - ONE TIME BUYERS (extract transactional data for customers assigned to segment 3 and export CSV file) 
 
 create table segmentTHREE as
 select id, transdate, category, brand, segment,
@@ -89,7 +93,8 @@ lines terminated by '\n' as
 select * from capstone.segmentTHREE;
 
 
-///// segmentFOUR - NEW CUSTOMERS
+
+///// segmentFOUR - NEW CUSTOMERS (extract transactional data for customers assigned to segment 4 and export CSV file) 
 
 create table segmentFOUR as
 select id, transdate, category, brand, segment,
@@ -105,6 +110,12 @@ row format delimited
 fields terminated by ','
 lines terminated by '\n' as
 select * from capstone.segmentFOUR;
+
+
+
+
+
+///// perform Market Basket Analysis for each customer segment in R 
 
 
 
