@@ -160,6 +160,7 @@ summary(Txns1)
 itemFrequencyPlot(Txns1,topN=7,type="absolute")
 
 // determine the itemsets that segment 1 most frequently purchases together (where each itemset must occur in at least 0.75% of segment 1 transactions) 
+
 rules_1 <- apriori(Txns1, parameter = list(supp = 0.0075, conf = 0.8))
 rules_1 <-sort(rules_1, by="confidence", decreasing=TRUE)
 summary(rules_1)
@@ -234,6 +235,7 @@ summary(Txns2)
 itemFrequencyPlot(Txns2,topN=7,type="absolute")
 
 // determine the itemsets that segment 2 most frequently purchases together (where each itemset must occur in at least 0.75% of segment 2 transactions) 
+
 rules_1 <- apriori(Txns1, parameter = list(supp = 0.0075, conf = 0.8))
 rules_2 <- apriori(Txns2, parameter = list(supp = 0.0075, conf = 0.8))
 rules_2 <-sort(rules_2, by="confidence", decreasing=TRUE)
