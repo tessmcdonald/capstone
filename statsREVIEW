@@ -2,3 +2,39 @@
 
 
 
+setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive Analytics/anovaDATA/aggregate')
+
+
+
+// perform the Friedman Test to determine if the brands that segment one does not purchase are commonly purchased by other segments 
+
+segmentoneDATA <- read.csv('segment1.csv', sep = ',', header = TRUE)
+
+friendman.test(propensity~segment|brand, data = segmentoneDATA)
+
+
+
+// perform the Friedman Test to determine if the brands that segment two does not purchase are commonly purchased by other segments 
+
+segmenttwoDATA <- read.csv('segment2.csv', sep = ',', header = TRUE)
+
+friendman.test(propensity~segment|brand, data = segmenttwoDATA) 
+
+
+
+// perform the Friedman Test to determine if the brands that segmen three does not purchase are commonly purchased by other segments
+
+segmentthreeDATA <- read.csv('segment3.csv', sep = ',', header = TRUE)
+
+friedman.test(propensity~segment|brand, data = segmentthreeDATA)
+
+
+
+// perform the Friedman Test to determine if the brands that segment four does not purchase are commonly purchased by other segments
+
+segmentfourDATA <- read.csv('segment4.csv', sep = ',', header = TRUE)
+
+friedman.test(propensity~segment|brand, data = segmentfourDATA) 
+
+
+
