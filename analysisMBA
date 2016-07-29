@@ -173,6 +173,7 @@ inspect(rules_1)
 
 // determine what brands are commonly purchased with the top 3 brands purchased by segment 1 (idenify the top 5 itemsets such that itemsets are not composed of the top 7 brands exclusively, ex. 0.1% support)
 
+
 rules1a <- apriori(data=Txns1, parameter=list(supp=0.001,conf = 0.1), 
 appearance = list(default="lhs",rhs="15704"),
 control = list(verbose=F))
@@ -250,6 +251,7 @@ inspect(rules_2)
 
 
 // determine what brands are commonly purchased with the top 3 brands purchased by segment 1 (idenify the top 5 itemsets such that itemsets are not composed of the top 7 brands exclusively, ex. 0.1% support)
+
 
 rules2a <- apriori(data=Txns2, parameter=list(supp=0.001,conf = 0.1), 
 appearance = list(default="lhs",rhs="15704"),
