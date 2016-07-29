@@ -2,7 +2,7 @@
 
 
 
-// create RFM table that contains three varaibles: custome ID, transaction date and total purchase amount 
+// create RFM table that contains three varaibles: customer ID, transaction date and total purchase amount 
 create table dataRFM as
 select id, transdate, sum(purchaseamount) as totalSPEND
 from cleanDATAx
