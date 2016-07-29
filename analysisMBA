@@ -139,6 +139,7 @@ seg1i <- read.csv('001i.csv', sep = ',', header = FALSE)
 segmentONE <- rbind(seg1a, seg1b, seg1c, seg1d, seg1e, seg1f, seg1g, seg1h, seg1i)
 colnames(segmentONE) = c('customer_id', 'date_of_purchase', 'category', 'brand', 'segment', 'product', 'transID')
 
+// extract transID and brand from data frame
 segmentONE$customer_id <- NULL
 segmentONE$date_of_purchase <- NULL
 segmentONE$category <- NULL
@@ -171,7 +172,7 @@ inspect(rules_1)
 
 
 
-// determine what brands are commonly purchased with the top 3 brands purchased by segment 1 (idenify the top 5 itemsets such that itemsets are not composed of the top 7 brands exclusively, ex. 0.1% support)
+// determine what brands are commonly purchased with the top 3 brands purchased by segment 1 (identify the top 5 itemsets such that itemsets are not composed of the top 7 brands exclusively, ex. 0.1% support)
 
 
 rules1a <- apriori(data=Txns1, parameter=list(supp=0.001,conf = 0.1), 
@@ -217,6 +218,7 @@ seg2f <- read.csv('002f.csv', sep = ',', header = FALSE)
 segmentTWO <- rbind(seg2a, seg2b, seg2c, seg2d, seg2e, seg2f)
 colnames(segmentTWO) = c('customer_id', 'date_of_purchase', 'category', 'brand', 'segment', 'product', 'transID')
 
+// extract transID and brand from data frame
 segmentTWO$customer_id <- NULL
 segmentTWO$date_of_purchase <- NULL
 segmentTWO$category <- NULL
@@ -241,7 +243,6 @@ itemFrequencyPlot(Txns2,topN=7,type="absolute")
 
 // determine the itemsets that segment 2 most frequently purchases together (where each itemset must occur in at least 0.75% of segment 2 transactions) 
 
-rules_1 <- apriori(Txns1, parameter = list(supp = 0.0075, conf = 0.8))
 rules_2 <- apriori(Txns2, parameter = list(supp = 0.0075, conf = 0.8))
 rules_2 <-sort(rules_2, by="confidence", decreasing=TRUE)
 summary(rules_2)
@@ -250,7 +251,7 @@ inspect(rules_2)
 
 
 
-// determine what brands are commonly purchased with the top 3 brands purchased by segment 2 (idenify the top 5 itemsets such that itemsets are not composed of the top 7 brands exclusively, ex. 0.1% support)
+// determine what brands are commonly purchased with the top 3 brands purchased by segment 2 (identify the top 5 itemsets such that itemsets are not composed of the top 7 brands exclusively, ex. 0.1% support)
 
 
 rules2a <- apriori(data=Txns2, parameter=list(supp=0.001,conf = 0.1), 
@@ -295,6 +296,7 @@ seg3e <- read.csv('003e.csv', sep = ',', header = FALSE)
 segmentTHREE <- rbind(seg3a, seg3b, seg3c, seg3d, seg3e)
 colnames(segmentTHREE) = c('customer_id', 'date_of_purchase', 'category', 'brand', 'segment', 'product', 'transID')
 
+// extract transID and brand from data frame
 segmentTHREE$customer_id <- NULL
 segmentTHREE$date_of_purchase <- NULL
 segmentTHREE$category <- NULL
@@ -372,6 +374,7 @@ seg4e <- read.csv('004e.csv', sep = ',', header = FALSE)
 segmentFOUR <- rbind(seg4a, seg4b, seg4c, seg4d, seg4e)
 colnames(segmentFOUR) = c('customer_id', 'date_of_purchase', 'category', 'brand', 'segment', 'product', 'transID')
 
+// extract transID and brand from data frame
 segmentFOUR$customer_id <- NULL
 segmentFOUR$date_of_purchase <- NULL
 segmentFOUR$category <- NULL
@@ -381,7 +384,7 @@ segmentFOUR$product <- NULL
 // identify distinct combinations of transaction ID and brand where transaction ID is 'customerID-transactionDATE'
 segmentFOURCLEAN <- unique(segmentFOUR)
 
-// group data so column 2 is transaction ID and column 2 is all brands purchased in a transaction
+// group data so column 1 is transaction ID and column 2 is all brands purchased in a transaction
 AggPosData4 <- split(segmentFOURCLEAN$brand,segmentFOURCLEAN$transID)
 head(AggPosData4)
 
@@ -394,7 +397,7 @@ itemFrequencyPlot(Txns4,topN=7,type="absolute")
 
 
 
-// determine the itemsets that segment 2 most frequently purchases together (where each itemset must occur in at least 0.75% of segment 4 transactions)
+// determine the itemsets that segment 4 most frequently purchases together (where each itemset must occur in at least 0.75% of segment 4 transactions)
 
 rules_4 <- apriori(Txns4, parameter = list(supp = 0.0075, conf = 0.8))
 rules_4 <-sort(rules_4, by="confidence", decreasing=TRUE)
