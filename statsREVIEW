@@ -18,11 +18,11 @@ friendman.test(propensity~segment|brand, data = segmentoneDATA)
 
 segmenttwoDATA <- read.csv('segment2.csv', sep = ',', header = TRUE)
 
-friendman.test(propensity~segment|brand, data = segmenttwoDATA) 
+friedman.test(propensity~segment|brand, data = segmenttwoDATA) 
 
 
 
-// perform the Friedman Test to determine if the brands that segmen three does not purchase are commonly purchased by other segments
+// perform the Friedman Test to determine if the brands that segment three does not purchase are commonly purchased by other segments
 
 segmentthreeDATA <- read.csv('segment3.csv', sep = ',', header = TRUE)
 
