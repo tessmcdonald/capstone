@@ -115,13 +115,15 @@ select * from capstone.segmentFOUR;
 
 
 
-///// perform Market Basket Analysis for each customer segment in R 
+///// perform Market Basket Analysis at the brand level for each customer segment (using R)  
 
 
 
 library('arules')
 
 
+
+// import transactional data for Segment 1 into R
 
 setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive Analytics/segmentONE')
 
@@ -143,22 +145,28 @@ segmentONE$category <- NULL
 segmentONE$segment <- NULL
 segmentONE$product <- NULL
 
+// identify distinct combinations of transaction ID and brand where transaction ID is 'employeeID-transactionDATE' 
 segmentONECLEAN <- unique(segmentONE)
 
+// manipulate data so column 1 is transaction ID and column 2 is all brands purchased in a transaction
 AggPosData1 <- split(segmentONECLEAN$brand,segmentONECLEAN$transID)
 head(AggPosData1)
 
+// prepare data for association rule algorithm 
 Txns1 <- as(AggPosData1,'transactions')
 summary(Txns1)
 
+// visualize the top 7 brands purchased by segment 1
 itemFrequencyPlot(Txns1,topN=7,type="absolute")
 
+// determine the itemsets that segment 1 most frequently purchases together (where each itemset must occur in at least 0.75% of segment 1 transactions) 
 rules_1 <- apriori(Txns1, parameter = list(supp = 0.0075, conf = 0.8))
 rules_1 <-sort(rules_1, by="confidence", decreasing=TRUE)
 summary(rules_1)
 
 inspect(rules_1)
 
+// determine what brands are commonly purchased with the top 3 brands purchased by segment 1 (idenify the top 5 itemsets such that itemsets are not composed of the top 7 brands exclusively, ex. 0.1% support)
 
 rules1a <- apriori(data=Txns1, parameter=list(supp=0.001,conf = 0.1), 
 appearance = list(default="lhs",rhs="15704"),
@@ -185,8 +193,6 @@ control = list(verbose=F))
 rules1c <- sort(rules1c, by="confidence", decreasing=TRUE)
 
 inspect(rules1c[1:5])
-
-
 
 
 
