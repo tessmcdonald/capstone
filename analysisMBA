@@ -145,7 +145,7 @@ segmentONE$category <- NULL
 segmentONE$segment <- NULL
 segmentONE$product <- NULL
 
-// identify distinct combinations of transaction ID and brand where transaction ID is 'employeeID-transactionDATE' 
+// identify distinct combinations of transaction ID and brand where transaction ID is 'customerID-transactionDATE' 
 segmentONECLEAN <- unique(segmentONE)
 
 // group data so column 1 is transaction ID and column 2 is all brands purchased in a transaction
@@ -223,7 +223,7 @@ segmentTWO$category <- NULL
 segmentTWO$segment <- NULL
 segmentTWO$product <- NULL
 
-// identify distinct combinations of transaction ID and brand where transaction ID is 'employeeID-transactionDATE'
+// identify distinct combinations of transaction ID and brand where transaction ID is 'customerID-transactionDATE'
 segmentTWOCLEAN <- unique(segmentTWO)
 
 // group data so column 1 is transaction ID and column 2 is all brands purchased in a transaction
@@ -234,7 +234,7 @@ head(AggPosData2)
 Txns2 <- as(AggPosData2,'transactions')
 summary(Txns2)
 
-// visualize the top 7 brands purchased by segment 1 
+// visualize the top 7 brands purchased by segment 2
 itemFrequencyPlot(Txns2,topN=7,type="absolute")
 
 
@@ -250,7 +250,7 @@ inspect(rules_2)
 
 
 
-// determine what brands are commonly purchased with the top 3 brands purchased by segment 1 (idenify the top 5 itemsets such that itemsets are not composed of the top 7 brands exclusively, ex. 0.1% support)
+// determine what brands are commonly purchased with the top 3 brands purchased by segment 2 (idenify the top 5 itemsets such that itemsets are not composed of the top 7 brands exclusively, ex. 0.1% support)
 
 
 rules2a <- apriori(data=Txns2, parameter=list(supp=0.001,conf = 0.1), 
@@ -283,6 +283,8 @@ inspect(rules2c[1:5])
 
 
 
+// import transactional data for Segment 3 into R
+
 setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive Analytics/segmentTHREE')
 
 seg3a <- read.csv('003a.csv', sep = ',', header = FALSE)
@@ -299,21 +301,33 @@ segmentTHREE$category <- NULL
 segmentTHREE$segment <- NULL
 segmentTHREE$product <- NULL
 
+// identify distinct combinations of transaction ID and brand where transaction ID is customerID-transactionDATE'
 segmentTHREECLEAN <- unique(segmentTHREE)
 
+// group data so column 1 is transaction ID and column 2 is all brands purchased in a transaction
 AggPosData3 <- split(segmentTHREECLEAN$brand,segmentTHREECLEAN$transID)
 head(AggPosData3)
 
+// prepare data for association rule algorithm 
 Txns3 <- as(AggPosData3,'transactions')
 summary(Txns3)
 
+// visualize the top 7 brands purchased by segment 3
 itemFrequencyPlot(Txns3,topN=7,type="absolute")
+
+
+
+// determine the itemsets that segment 3 most frequently purchases together (where each itemset must occur in at least 0.75% of segment 3 transactions) 
 
 rules_3 <- apriori(Txns3, parameter = list(supp = 0.0075, conf = 0.8))
 rules_3 <-sort(rules_3, by="confidence", decreasing=TRUE)
 summary(rules_3)
 
 inspect(rules_3)
+
+
+
+// determine what brands are commonly purchased with the top 3 brands purchased by segment 3 (identify the top 5 itemsets such that itemsets are not composed of the top 7 brands exclusively, ex. 0.1% support)
 
 
 rules3a <- apriori(data=Txns3, parameter=list(supp=0.001,conf = 0.1), 
@@ -346,6 +360,8 @@ inspect(rules3c[1:5])
 
 
 
+// import transactional data for Segment 4 into R
+
 setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive Analytics/segmentFOUR')
 
 seg4a <- read.csv('004a.csv', sep = ',', header = FALSE)
@@ -362,21 +378,33 @@ segmentFOUR$category <- NULL
 segmentFOUR$segment <- NULL
 segmentFOUR$product <- NULL
 
+// identify distinct combinations of transaction ID and brand where transaction ID is 'customerID-transactionDATE'
 segmentFOURCLEAN <- unique(segmentFOUR)
 
+// group data so column 2 is transaction ID and column 2 is all brands purchased in a transaction
 AggPosData4 <- split(segmentFOURCLEAN$brand,segmentFOURCLEAN$transID)
 head(AggPosData4)
 
+// prepare data for association rule algorithm 
 Txns4 <- as(AggPosData4,'transactions')
 summary(Txns4)
 
+// visualize the top 7 brands purchased by segment 4
 itemFrequencyPlot(Txns4,topN=7,type="absolute")
+
+
+
+// determine the itemsets that segment 2 most frequently purchases together (where each itemset must occur in at least 0.75% of segment 4 transactions)
 
 rules_4 <- apriori(Txns4, parameter = list(supp = 0.0075, conf = 0.8))
 rules_4 <-sort(rules_4, by="confidence", decreasing=TRUE)
 summary(rules_4)
 
 inspect(rules_4)
+
+
+
+// determine what brands are commonly purchased with the top 3 brands purchased by segment 4 (identify the top 5 itemsets such that itemsets are not composed of the top 7 brands exclusively, ex. 0.1% support)
 
 
 rules4a <- apriori(data=Txns4, parameter=list(supp=0.001,conf = 0.1), 
@@ -404,3 +432,6 @@ control = list(verbose=F))
 rules4c <- sort(rules4c, by="confidence", decreasing=TRUE)
 
 inspect(rules4c[1:5])
+
+
+
