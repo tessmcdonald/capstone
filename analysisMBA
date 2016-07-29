@@ -148,7 +148,7 @@ segmentONE$product <- NULL
 // identify distinct combinations of transaction ID and brand where transaction ID is 'employeeID-transactionDATE' 
 segmentONECLEAN <- unique(segmentONE)
 
-// manipulate data so column 1 is transaction ID and column 2 is all brands purchased in a transaction
+// group data so column 1 is transaction ID and column 2 is all brands purchased in a transaction
 AggPosData1 <- split(segmentONECLEAN$brand,segmentONECLEAN$transID)
 head(AggPosData1)
 
@@ -200,6 +200,8 @@ inspect(rules1c[1:5])
 
 
 
+// import transactional data for Segment 2 into R
+
 setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive Analytics/segmentTWO')
 
 seg2a <- read.csv('002a.csv', sep = ',', header = FALSE)
@@ -217,22 +219,31 @@ segmentTWO$category <- NULL
 segmentTWO$segment <- NULL
 segmentTWO$product <- NULL
 
+// identify distinct combinations of transaction ID and brand where transaction ID is 'employeeID-transactionDATE'
 segmentTWOCLEAN <- unique(segmentTWO)
 
+// group data so column 1 is transaction ID and column 2 is all brands purchased in a transaction
 AggPosData2 <- split(segmentTWOCLEAN$brand,segmentTWOCLEAN$transID)
 head(AggPosData2)
 
+// prepare data for association rule algorithm 
 Txns2 <- as(AggPosData2,'transactions')
 summary(Txns2)
 
+// visualize the top 7 brands purchased by segment 1 
 itemFrequencyPlot(Txns2,topN=7,type="absolute")
 
+// determine the itemsets that segment 2 most frequently purchases together (where each itemset must occur in at least 0.75% of segment 2 transactions) 
+rules_1 <- apriori(Txns1, parameter = list(supp = 0.0075, conf = 0.8))
 rules_2 <- apriori(Txns2, parameter = list(supp = 0.0075, conf = 0.8))
 rules_2 <-sort(rules_2, by="confidence", decreasing=TRUE)
 summary(rules_2)
 
 inspect(rules_2)
 
+
+
+// determine what brands are commonly purchased with the top 3 brands purchased by segment 1 (idenify the top 5 itemsets such that itemsets are not composed of the top 7 brands exclusively, ex. 0.1% support)
 
 rules2a <- apriori(data=Txns2, parameter=list(supp=0.001,conf = 0.1), 
 appearance = list(default="lhs",rhs="15704"),
