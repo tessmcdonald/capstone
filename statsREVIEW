@@ -10,7 +10,7 @@ setwd('\\\\files.loyalty.com/users/tmcdonald/My Documents/Big Data & Predictive 
 
 segmentoneDATA <- read.csv('segment1.csv', sep = ',', header = TRUE)
 
-friendman.test(propensity~segment|brand, data = segmentoneDATA)
+friedman.test(propensity~segment|brand, data = segmentoneDATA)
 
 
 
