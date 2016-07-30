@@ -157,8 +157,8 @@ head(AggPosData1)
 Txns1 <- as(AggPosData1,'transactions')
 summary(Txns1)
 
-// visualize the top 3 brands purchased by segment 1
-itemFrequencyPlot(Txns1,topN=3,type="absolute")
+// visualize the top 7 brands purchased by segment 1
+itemFrequencyPlot(Txns1,topN=7,type="absolute")
 
 
 
@@ -236,8 +236,8 @@ head(AggPosData2)
 Txns2 <- as(AggPosData2,'transactions')
 summary(Txns2)
 
-// visualize the top 3 brands purchased by segment 2
-itemFrequencyPlot(Txns2,topN=3,type="absolute")
+// visualize the top 7 brands purchased by segment 2
+itemFrequencyPlot(Txns2,topN=7,type="absolute")
 
 
 
@@ -314,8 +314,8 @@ head(AggPosData3)
 Txns3 <- as(AggPosData3,'transactions')
 summary(Txns3)
 
-// visualize the top 3 brands purchased by segment 3
-itemFrequencyPlot(Txns3,topN=3,type="absolute")
+// visualize the top 7 brands purchased by segment 3
+itemFrequencyPlot(Txns3,topN=7,type="absolute")
 
 
 
@@ -392,8 +392,8 @@ head(AggPosData4)
 Txns4 <- as(AggPosData4,'transactions')
 summary(Txns4)
 
-// visualize the top 3 brands purchased by segment 4
-itemFrequencyPlot(Txns4,topN=3,type="absolute")
+// visualize the top 7 brands purchased by segment 4
+itemFrequencyPlot(Txns4,topN=7,type="absolute")
 
 
 
